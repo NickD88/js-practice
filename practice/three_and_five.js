@@ -9,7 +9,3 @@ function multiplesOfThreeAndFive(min, max) {
 }
 
 multiplesOfThreeAndFive(50, 100);
-
-// for loop from 1 - 100
-// if number div 3 and 5 put number with !
-// if number div by 3 || 5 put number
