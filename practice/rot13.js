@@ -1,10 +1,11 @@
 function rot13(string) {
   var cypherString = '';
+  var isUpperCase;
 
   var encodeLowerCase = function(ascii) {
     if (ascii + 13 > 122) {
-      var valuesFromA = 12 - (122 - ascii);
-      return String.fromCharCode(97 + valuesFromA);
+      var valuesFromBeginning = 13 - (122 - ascii);
+      return String.fromCharCode(96 + valuesFromBeginning);
     } else {
       return String.fromCharCode(ascii + 13);
     }
@@ -12,20 +13,32 @@ function rot13(string) {
 
   var encodeUpperCase = function(ascii) {
     if (ascii + 13 > 90) {
-      var valuesFromA = 12 - (90 - ascii);
-      return String.fromCharCode(65 + valuesFromA);
+      var valuesFromBeginnig = 13 - (90 - ascii);
+      return String.fromCharCode(64 + valuesFromBeginnig);
     } else {
       return String.fromCharCode(ascii + 13);
     }
+  }
+
+  var encodeChar = function(ascii) {
+    var cypherChar = ascii + 13;
+    if (isUpperCase && cypherChar > 90) {
+      cypherChar -= 26;
+    } else if (!isUpperCase && cypherChar > 122) {
+      cypherChar -= 26;
+    }
+    return cypherChar;
   }
 
   for (var i = 0; i < string.length; i++) {
     var asciiCode = string.charCodeAt(i);
 
     if (asciiCode >= 65 && asciiCode <= 90) {
-      cypherString += encodeUpperCase(asciiCode);
+      isUpperCase = true;
+      cypherString += encodeChar(asciiCode);
     } else if (asciiCode >= 97 && asciiCode <= 122) {
-      cypherString += encodeLowerCase(asciiCode);
+      isUpperCase = false;
+      cypherString += encodeChar(asciiCode);
     } else {
       cypherString += string[i];
     }
@@ -39,6 +52,8 @@ console.log(rot13('Teachers open the door, but you must enter by yourself.'));
 
 console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.')));
   //'Teachers open the door, but you must enter by yourself.'
+
+
 
 // itterate over the string and build a new return string
 // determine if letter is uppercase or lowercase
