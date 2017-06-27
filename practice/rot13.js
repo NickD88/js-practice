@@ -1,8 +1,8 @@
 function rot13(string) {
-  var cypherString = '';
+  var cipherString = '';
 
-  var encodeChar = function(char) {
-    var cypherChar = char.charCodeAt() + 13;
+  function encodeChar(char) {
+    var cipherChar = char.charCodeAt() + 13;
     var topZBoundary;
 
     if (char.toLowerCase() === char) {
@@ -11,24 +11,23 @@ function rot13(string) {
       topZBoundary = 'Z'.charCodeAt();
     }
     
-    if (cypherChar > topZBoundary) {
-      cypherChar -= 26;
+    if (cipherChar > topZBoundary) {
+      cipherChar -= 26;
     }
 
-    return String.fromCharCode(cypherChar);
+    return String.fromCharCode(cipherChar);
   }
 
   for (var i = 0; i < string.length; i++) {
-    var asciiCode = string.charCodeAt(i);
 
-    if (string[i].match(/[a-zA-Z]/g)) {
-      cypherString += encodeChar(string[i]);
+    if (string[i].match(/[a-zA-Z]/)) {
+      cipherString += encodeChar(string[i]);
     } else {
-      cypherString += string[i];
+      cipherString += string[i];
     }
   }
 
-  return cypherString;
+  return cipherString;
 }
 
 console.log(rot13('Teachers open the door, but you must enter by yourself.'));
@@ -37,7 +36,11 @@ console.log(rot13('Teachers open the door, but you must enter by yourself.'));
 console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.')));
   //'Teachers open the door, but you must enter by yourself.'
 
+console.log(rot13('Test The cipher'));
+  //'Grfg Gur PlCuRse'
 
+console.log(rot13(rot13('Test The cipher')));
+  //'Test The cipher'
 
 // itterate over the string and build a new return string
 // determine if letter is uppercase or lowercase 
