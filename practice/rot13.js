@@ -1,22 +1,22 @@
+function encodeChar(char) {
+  var cipherChar = char.charCodeAt() + 13;
+  var topZBoundary;
+
+  if (char.toLowerCase() === char) {
+    topZBoundary = 'z'.charCodeAt();
+  } else {
+    topZBoundary = 'Z'.charCodeAt();
+  }
+  
+  if (cipherChar > topZBoundary) {
+    cipherChar -= 26;
+  }
+
+  return String.fromCharCode(cipherChar);
+}
+
 function rot13(string) {
   var cipherString = '';
-
-  function encodeChar(char) {
-    var cipherChar = char.charCodeAt() + 13;
-    var topZBoundary;
-
-    if (char.toLowerCase() === char) {
-      topZBoundary = 'z'.charCodeAt();
-    } else {
-      topZBoundary = 'Z'.charCodeAt();
-    }
-    
-    if (cipherChar > topZBoundary) {
-      cipherChar -= 26;
-    }
-
-    return String.fromCharCode(cipherChar);
-  }
 
   for (var i = 0; i < string.length; i++) {
 
@@ -37,7 +37,7 @@ console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.
   //'Teachers open the door, but you must enter by yourself.'
 
 console.log(rot13('Test The cipher'));
-  //'Grfg Gur PlCuRse'
+  //'Grfg Gur plCuRse'
 
 console.log(rot13(rot13('Test The cipher')));
   //'Test The cipher'

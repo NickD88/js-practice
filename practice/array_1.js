@@ -24,3 +24,26 @@
 // }
 
 // console.log(reverseArray([1, 2, 3, 4, 5])); // [5, 4, 3, 2, 1]
+
+// function findFirstInstance(value, array) {
+//   for (var i = 0; i < array.length; i++) {
+//     if (array[i] ===  value) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
+
+// console.log(findFirstInstance(2, [1, 2, 3, 4, 5, 2])) // 1
+
+// console.log(findFirstInstance('a', ['z', 3, 5, 'e', 9, 'a'])) // 5
+
+// function deconstuctArray(array) {
+//   var convertedStr = '';
+//   for (var i = 0; i < array.length; i++) {
+//     convertedStr += String(array[i]);
+//   }
+//   return convertedStr;
+// }
+
+// console.log(deconstuctArray(['a', 2, 5, 'f'])) // 'a25f'
