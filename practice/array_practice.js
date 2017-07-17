@@ -89,11 +89,11 @@
 // }
 
 
-var logValue = 'foo';
+// var logValue = 'foo';
 
-function logValue() {
-  console.log('Hello, world!');
-}
+// function logValue() {
+//   console.log('Hello, world!');
+// }
 
-console.log(typeof logValue);
+// console.log(typeof logValue);
 
