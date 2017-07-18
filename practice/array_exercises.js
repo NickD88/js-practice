@@ -197,36 +197,36 @@
 // console.log(arr);                              // [1, 2, 3]
 
 
-function splice(array, start, deleteCount) {
-  start = start > arrayLength ? arrayLength : start;
-  deleteCount = deleteCount > (arrayLength - start) ? arrayLength - start : deleteCount;
+// function splice(array, start, deleteCount) {
+//   start = start > arrayLength ? arrayLength : start;
+//   deleteCount = deleteCount > (arrayLength - start) ? arrayLength - start : deleteCount;
 
-  var deletedElements = array.slice(start, start + deleteCount)
-  var arrayLength = array.length;
-  var itemsToAddCount = arguments.length - 3;
-  var newArrayLength = array.length + itemsToAddCount - deleteCount;
+//   var deletedElements = array.slice(start, start + deleteCount)
+//   var arrayLength = array.length;
+//   var itemsToAddCount = arguments.length - 3;
+//   var newArrayLength = array.length + itemsToAddCount - deleteCount;
 
-  for (var i = start; i < array.length; i++) {
-    array[i] = array[i + deleteCount];
-  }
+//   for (var i = start; i < array.length; i++) {
+//     array[i] = array[i + deleteCount];
+//   }
 
-  if (itemsToAddCount > 0) {
-    for (var i = newArrayLength; i > start; i--) {
-      array[i] = array[i - 1];
-    }
+//   if (itemsToAddCount > 0) {
+//     for (var i = newArrayLength; i > start; i--) {
+//       array[i] = array[i - 1];
+//     }
 
-    for (var j = 3; j < arguments.length; j++){
-      array[start] = arguments[j];
-      start += 1;
-    }
-  }
+//     for (var j = 3; j < arguments.length; j++){
+//       array[start] = arguments[j];
+//       start += 1;
+//     }
+//   }
   
-  array.length = newArrayLength;
-  // console.log(array);
-  return deletedElements;
-}
+//   array.length = newArrayLength;
+//   // console.log(array);
+//   return deletedElements;
+// }
 
-var tstArr = [1, 2, 3, 4];
+// var tstArr = [1, 2, 3, 4];
 
 // console.log(splice(tstArr, 1, 2));         // [2, 3]
 
@@ -236,19 +236,55 @@ var tstArr = [1, 2, 3, 4];
 // console.log(splice([1, 2, 3], 0, 1));                   // [1]
 // console.log(splice([1, 2, 3], 1, 0, 'a'));               // []
 
-var arr = [1, 2, 3];
-console.log(splice(arr, 1, 1, 'two'));                  // [2]
-console.log(arr);                                       // [1, 'two', 3];
+// var arr = [1, 2, 3];
+// console.log(splice(arr, 1, 1, 'two'));                  // [2]
+// console.log(arr);                                       // [1, 'two', 3];
 
-var arr = [1, 2, 3];
-console.log(splice(arr, 1, 2, 'two', 'three'));          // [2 ,3]
-console.log(arr);                                       // [1, "two", "three"]
+// var arr = [1, 2, 3];
+// console.log(splice(arr, 1, 2, 'two', 'three'));          // [2 ,3]
+// console.log(arr);                                       // [1, "two", "three"]
 
-var arr = [1, 2, 3];
-console.log(splice(arr, 1, 0));                         // []
-console.log(splice(arr, 1, 0, 'a'));                    // []
-console.log(arr);                                       // [1, 'a', 2, 3]
+// var arr = [1, 2, 3];
+// console.log(splice(arr, 1, 0));                         // []
+// console.log(splice(arr, 1, 0, 'a'));                    // []
+// console.log(arr);                                       // [1, 'a', 2, 3]
 
-var arr = [1, 2, 3];
-console.log(splice(arr, 0, 0, 'a'));                    // []
-console.log(arr);                                       // ['a', 1, 2, 3]
+// var arr = [1, 2, 3];
+// console.log(splice(arr, 0, 0, 'a'));                    // []
+// console.log(arr);                                       // ['a', 1, 2, 3]
+
+// function oddities(array) {
+//   var oddElements = [];
+//   for (var i = 0; i < array.length; i += 2) {
+//     oddElements.push(array[i]);
+//   }
+//   return oddElements;
+// }
+
+// console.log(oddities([2, 3, 4, 5, 6]) === [2, 4, 6]);   // false because not same object
+// oddities(['abc', 'def']) === ['def']      // false
+
+
+// function areArraysEqual(array1, array2) {
+//   if (array1.length !== array2.length) return false;
+
+//   var sortedArray1 = array1.sort();
+//   var sortedArray2 = array2.sort();
+//   var isEqual = true;
+
+//   for (var i = 0; i < sortedArray1.length; i++) {
+//     if (sortedArray1[i] !== sortedArray2[i]) {
+//       isEqual = false;
+//       break;
+//     }
+//   }
+//   return isEqual;
+// }
+
+// console.log(areArraysEqual([1, 2, 3], [1, 2, 3]));                  // true
+// console.log(areArraysEqual([1, 2, 3], [3, 2, 1]));                  // true
+// console.log(areArraysEqual(['a', 'b', 'c'], ['b', 'c', 'a']));      // true
+// console.log(areArraysEqual(['1', 2, 3], [1, 2, 3]));                // false
+// console.log(areArraysEqual([1, 1, 2, 3], [3, 1, 2, 1]));            // true
+// console.log(areArraysEqual([1, 2, 3, 4], [1, 1, 2, 3]));            // false
+// console.log(areArraysEqual([1, 1, 2, 2], [4, 2, 3, 1]));            // false
