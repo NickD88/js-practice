@@ -152,3 +152,45 @@
 
 // ***************************
 
+// var MINUTES_PER_HOUR = 60;
+// var HOURS_PER_DAY = 24;
+// var MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
+
+// function timeOfDay(deltaMinutes) {
+//   var time = new Date(0, 0, 0, 0, deltaMinutes).toTimeString();
+//   return time.substr(0, 5);
+// }
+
+// console.log(timeOfDay(0));       // "00:00"
+// console.log(timeOfDay(-3));      // "23:57"
+// console.log(timeOfDay(35));      // "00:35"
+// console.log(timeOfDay(-1437));   // "00:03"
+// console.log(timeOfDay(3000));    // "02:00"
+// console.log(timeOfDay(800));     // "13:20"
+// console.log(timeOfDay(-4231));   // "01:29"
+
+
+// *******************************
+
+// var MINUTES_PER_HOUR = 60;
+// var HOURS_PER_DAY = 24;
+// var MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
+
+// function afterMidnight(timeStr) {
+//   var midnight = new Date(0, 0, 0, 0, 0);
+//   var time = new Date(0, 0, 0, timeStr.substr(0, 2), timeStr.substr(3, 2));
+//   return (time - midnight) / 60000;
+// }
+
+// function beforeMidnight(timeStr) {
+//   var deltaMinutes = MINUTES_PER_DAY - afterMidnight(timeStr);
+//   if (deltaMinutes === MINUTES_PER_DAY) {
+//     deltaMinutes = 0;
+//   }
+//   return deltaMinutes;
+// }
+
+// console.log(afterMidnight('00:00'));        // 0
+// console.log(beforeMidnight('00:00'));       // 0
+// console.log(afterMidnight('12:34'));        // 754
+// console.log(beforeMidnight('12:34'));       // 686
