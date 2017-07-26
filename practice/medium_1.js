@@ -137,19 +137,19 @@
 
 // ************************************
 
-function productOfSums(array1, array2) {
-  var result;
-  result = total(array1) * total(array2);
-  return result;
-}
+// function productOfSums(array1, array2) {
+//   var result;
+//   result = total(array1) * total(array2);
+//   return result;
+// }
 
-function total(numbers) {
-  var sum = 0;
-  for (var i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
+// function total(numbers) {
+//   var sum = 0;
+//   for (var i = 0; i < numbers.length; i++) {
+//     sum += numbers[i];
+//   }
 
-  return sum;
-}
+//   return sum;
+// }
 
-console.log(productOfSums([1, 2, 3], [1, 2, 3])); // 36
+// console.log(productOfSums([1, 2, 3], [1, 2, 3])); // 36
