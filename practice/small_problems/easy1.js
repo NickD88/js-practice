@@ -42,3 +42,16 @@
 //       conversionType + ').')
 
 // ** Tip Calculator
+
+// var billAmount = parseFloat(prompt('What is the bill?'));
+// var tipPercentage = parseFloat(prompt('What is the tip percentage?'));
+// var totalBill;
+// var tip;
+
+// tip = billAmount * tipPercentage / 100;
+// totalBill = billAmount + tip;
+
+// console.log('The tipe is $' + tip.toFixed(2));
+// console.log('The total is $' + totalBill.toFixed(2));
+
+// ** Sum or Product of Consecutive Integers
