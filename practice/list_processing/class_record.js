@@ -36,54 +36,75 @@ var studentScores = {
   },
 };
 
-function generateClassRecordSummary(studentsScores) {
-  function getStudentsGrades(obj) {
-    var student = []
-    Object.keys(obj).forEach(function(key) {
-      return student.push(obj[key]['scores']);
-    });
-    return student
-  }
-
-  function calculateExamAverage (scores) {
-    var averageScores = [];
-    getStudentsGrades(scores).forEach(function(student) {
-      var average = student['exams'].reduce(function(sum, score) {
-        return sum += score;
-      },0);
-      averageScores.push(Math.round(average / student['exams'].length));
-    });
-    return averageScores;
-  }
-
-  function formatGrades(scores) {
-    var letterGrades = calculateExamAverage(scores).map(function(grade) {
-      var gradeWithLetter = grade;
-      switch(true){
-        case (grade <= 100 && grade >= 93):
-          gradeWithLetter += ' (A)';
-          break;
-        default:
-          gradeWithLetter += ' (F)';
-      }
-      return gradeWithLetter;
-    });
-    return letterGrades;
-  }
-
-  return formatGrades(studentsScores);
+function generateClassRecordSummary(studentsRecords) {
+  var studentAverages = getFormattedGrades(studentsRecords);
+  var exams = ['test', 1]
+  return {
+    studentGrades: studentAverages,
+    exams: exams
+  };
 }
 
-//   function calculateStudentAverage(scores) {
-//     var average = Object.keys(scores).forEach(function(student) {
-//       var totalScore = studentsScores.student[scores][exams].reduce(function(sum,grade) {
-//         return sum += grade;
-//       });
-//       return totalScore / student.scores.exams.length();
-//     });
-//   }
-//   return calculateStudentAverage(studentsScores);
-// }
+function getStudentsGrades(obj) {
+  var student = []
+  Object.keys(obj).forEach(function(key) {
+    return student.push(obj[key]['scores']);
+  });
+  return student
+}
+
+function calculateStudentsAverage(scores) {
+  var averageScores = [];
+  getStudentsGrades(scores).forEach(function(student) {
+    var average = student['exams'].reduce(function(sum, score) {
+      return sum += score;
+    },0);
+    averageScores.push(Math.round(average / student['exams'].length));
+  });
+  return averageScores;
+}
+
+function calculateExerciseGrade(scores) {
+  var score = scores['exercises'].reduce(function(sum, grade){
+    return sum += grade;
+  }, 0);
+  return score / 100;
+}
+
+function determineAverage(scoresArr) {
+  var totalPoints = scoressArr.reduce(function(sum, grade) {
+    return sum += grade;
+  }, 0);
+  return totalPoints / scores.length;
+}
+
+function getFormattedGrades(scores) {
+  var letterGrades = calculateExamAverage(scores).map(function(grade) {
+    var gradeWithLetter = grade;
+    switch(true){
+      case (grade <= 100 && grade >= 93):
+        gradeWithLetter += ' (A)';
+        break;
+      case (grade >= 85):
+        gradeWithLetter += ' (B)';
+        break;
+      case (grade >= 77):
+        gradeWithLetter += ' (C)';
+        break;
+      case (grade >= 69):
+        gradeWithLetter += ' (D)';
+        break;
+      case (grade >= 60):
+        gradeWithLetter += ' (E)';
+        break;
+      default:
+        gradeWithLetter += ' (F)';
+    }
+    return gradeWithLetter;
+  });
+  return letterGrades;
+}
+
 
 console.log(generateClassRecordSummary(studentScores));
 
