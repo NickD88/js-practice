@@ -3,7 +3,7 @@ var EXERCISE_WEIGHT = 0.35;
 
 
 function generateClassRecordSummary(studentsRecords) {
-  var studentAverages = getStudentsGrades(studentsRecords);
+  var studentAverages = studentsExamGrades(studentsRecords);
   var exams = examSummary(studentsRecords);
   return {
     studentGrades: studentAverages,
@@ -11,7 +11,7 @@ function generateClassRecordSummary(studentsRecords) {
   };
 }
 
-function getStudentsGrades(students) {
+function studentsExamGrades(students) {
   var studentAverage = [];
   Object.keys(students).forEach(function(student) {
     var studentScores = students[student].scores;
