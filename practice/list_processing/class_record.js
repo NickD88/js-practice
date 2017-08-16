@@ -1,41 +1,3 @@
-var studentScores = {
-  student1: {
-    id: 123456789,
-    scores: {
-      exams: [90, 95, 100, 80],
-      exercises: [20, 15, 10, 19, 15],
-    },
-  },
-  student2: {
-    id: 123456799,
-    scores: {
-      exams: [50, 70, 90, 100],
-      exercises: [0, 15, 20, 15, 15],
-    },
-  },
-  student3: {
-    id: 123457789,
-    scores: {
-      exams: [88, 87, 88, 89],
-      exercises: [10, 20, 10, 19, 18],
-    },
-  },
-  student4: {
-    id: 112233445,
-    scores: {
-      exams: [100, 100, 100, 100],
-      exercises: [10, 15, 10, 10, 15],
-    },
-  },
-  student5: {
-    id: 112233446,
-    scores: {
-      exams: [50, 80, 60, 90],
-      exercises: [10, 0, 10, 10, 0],
-    },
-  },
-};
-
 var EXAM_WEIGHT = 0.65;
 var EXERCISE_WEIGHT = 0.35;
 
@@ -54,14 +16,14 @@ function getStudentsGrades(students) {
   Object.keys(students).forEach(function(student) {
     var studentScores = students[student].scores;
     var examAverage = calculateExamAverage(studentScores.exams);
-    var exerciseAverage = calculateExerciseAverage(studentScores.exercises);
+    var exerciseAverage = calculateExerciseScore(studentScores.exercises);
     var weightedAverage = examAverage * EXAM_WEIGHT + exerciseAverage * EXERCISE_WEIGHT
     studentAverage.push(Math.round(weightedAverage))
   });
   return formatGrades(studentAverage);
 }
 
-function calculateExerciseAverage(scores) {
+function calculateExerciseScore(scores) {
   return scores.reduce(function(sum, grade){
     return sum += grade;
   }, 0);
@@ -101,44 +63,75 @@ function formatGrades(scores) {
   return formattedGrades;
 }
 
-// function examSummary(students) {
-//   var summary = [];
-//   var exams = sortedExamGrades(students);
-//   exams.forEach(function(exam) {
-//     summary.push(
-//         {
-//         average: 6,
-//         minimum: 2,
-//         maximum: 4
-//       });
-//   });
-//   return summary;
-// }
+function examSummary(students) {
+  var summary = [];
+  var exams = getSortedExamScores(students);
+  exams.forEach(function(exam) {
+    summary.push(
+        {
+        average: Math.round(calculateExamAverage(exam) * 10) / 10,
+        minimum: Math.min.apply(null, exam),
+        maximum: Math.max.apply(null, exam)
+      });
+  });
+  return summary;
+}
 
-// function sortedExamGrades(students) {
-//   var sortedExams = [];
-//   var exams = getAllExamScores(students);
-//   for (var i = 0; i < exams.length - 1; i++) {
-//     var examScores = [];
-//     for (var j = 0; j < exams.length; j++) {
-//       examScores.push(exams[j][i]);
-//     }
-//     sortedExams.push(examScores);
-//   }
-//   return sortedExams;
-// }
+function transpose(exercises) {
+  return Object.keys(exercises[0]).map(function (column){
+    return exercises.map(function(row) {
+      return row[column];
+    });
+  });
+}
 
-// function getAllExamScores(students) {
-//   var allGrades = [];
-//   Object.keys(students).forEach(function(student) {
-//     allGrades.push(students[student].scores.exams);
-//   });
-//   console.log(allGrades);
-//   return allGrades;
-// }
+function getSortedExamScores(students) {
+  var allGrades = [];
+  Object.keys(students).forEach(function(student) {
+    allGrades.push(students[student].scores.exams);
+  });
+  return transpose(allGrades);
+}
+
+var studentScores = {
+  student1: {
+    id: 123456789,
+    scores: {
+      exams: [90, 95, 100, 80],
+      exercises: [20, 15, 10, 19, 15],
+    },
+  },
+  student2: {
+    id: 123456799,
+    scores: {
+      exams: [50, 70, 90, 100],
+      exercises: [0, 15, 20, 15, 15],
+    },
+  },
+  student3: {
+    id: 123457789,
+    scores: {
+      exams: [88, 87, 88, 89],
+      exercises: [10, 20, 10, 19, 18],
+    },
+  },
+  student4: {
+    id: 112233445,
+    scores: {
+      exams: [100, 100, 100, 100],
+      exercises: [10, 15, 10, 10, 15],
+    },
+  },
+  student5: {
+    id: 112233446,
+    scores: {
+      exams: [50, 80, 60, 90],
+      exercises: [10, 0, 10, 10, 0],
+    },
+  },
+};
 
 console.log(generateClassRecordSummary(studentScores));
-
 // returns:
 
 // {
@@ -150,16 +143,3 @@ console.log(generateClassRecordSummary(studentScores));
 //     { average: 91.8, minimum: 80, maximum: 100 },
 //   ],
 // }
-
-// input object
-// output object
-
-// compute each student exam average - reduce array 
-// compute the exercise score total - reduce array
-// compute the weighted averages
-// post process the average (round) and look up letter grade
-// push letter grade into studentGrades array insude the returned object
-
-// loop through each exam and calculate the average / min and max number for each exam
-// average should be rounded to one decimal point
-// return averages in an array of objects inside the returned object
