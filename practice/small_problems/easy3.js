@@ -11,7 +11,7 @@
 
 // function checkLastNum(numOfNums) {
 //   var numbers = [];
-//   var lastNum;
+//   var lastNum; 
 //   var numAppears;
 
 //   for (var i = 1; i < numOfNums; i++) {
@@ -166,3 +166,7 @@ console.log(wordSizes('Four score and seven.'));                        // { "3"
 console.log(wordSizes('Hey diddle diddle, the cat and the fiddle!'));   // { "3": 5, "6": 3 }
 console.log(wordSizes('What\'s up doc?'));                              // { "5": 1, "2": 1, "3": 1 }
 console.log(wordSizes(''));                                             // {}
+
+test
+test
+test
