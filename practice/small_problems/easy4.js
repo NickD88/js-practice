@@ -62,7 +62,6 @@
 //   })[0];
 // }
 
-
 // console.log(findDup([1, 5, 3, 1]))                              // 1
 // console.log(findDup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
 //          38, 25, 97, 92, 46, 69, 91, 59, 53, 27,
@@ -75,7 +74,6 @@
 //          40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
 //          7,  34, 57, 74, 45, 11, 88, 67,  5, 58]))  // 73
 
-
 // Combine Two Lists
 // function interleave(arr1, arr2) {
 //   var combinedArr = [];
@@ -85,9 +83,7 @@
 //   return combinedArr;
 // }
 
-
 // console.log(interleave([1, 2, 3], ['a', 'b', 'c'])) // [1, 'a', 2, 'b', 3, 'c']
-
 
 // Multiplicaive Average
 
@@ -120,12 +116,10 @@
 //   return String(num).split('').map(Number);
 // }
 
-
 // console.log(digitList(12345));       // [1, 2, 3, 4, 5]
 // console.log(digitList(7));           // [7]
 // console.log(digitList(375290));      // [3, 7, 5, 2, 9, 0]
 // console.log(digitList(444));         // [4, 4, 4]
-
 
 // How Many
 // function countOccurrences(vehicleList) {
@@ -135,12 +129,11 @@
 //     vehicleCount[vehicle] = vehicleCount[vehicle] || 0;
 //     vehicleCount[vehicle] += 1;
 //   });
-  
+
 //   for (var vehicle in vehicleCount) {
 //     console.log(`${vehicle} -> ${vehicleCount[vehicle]}`);
 //   }
 // }
-
 
 // var vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck', 'motorcycle', 'motorcycle', 'car', 'truck'];
 // console.log(countOccurrences(vehicles));
@@ -151,7 +144,6 @@
 // // SUV => 1
 // // motorcycle => 2
 
-
 // Array Average
 
 // function average(arr) {
@@ -161,7 +153,6 @@
 
 //   return Math.floor(avg);
 // }
-
 
 // console.log(average([1, 5, 87, 45, 8, 8]));    // 25
 // console.log(average([9, 47, 23, 95, 16, 52])); // 40

@@ -20,7 +20,7 @@ function checkGoldbach(n) {
     return;
   }
 
-  for (i = 1; i <= n; i++) {
+  for (var i = 1; i <= n; i++) {
     var j = n - i;
     if (isPrime(i) && isPrime(j)) {
       console.log(i, j);

@@ -1,11 +1,11 @@
 function toLowerCase(string) {
-  formattedStr = '';
+  var formattedStr = '';
 
   for (var i = 0; i < string.length; i++) {
 
-    asciiValue = string[i].charCodeAt(0);
+  var  asciiValue = string[i].charCodeAt(0);
     if (asciiValue >= 65 && asciiValue <= 90) {
-      asciiValue += 32
+      asciiValue += 32;
       formattedStr += String.fromCharCode(asciiValue);
     } else {
       formattedStr += string[i];
