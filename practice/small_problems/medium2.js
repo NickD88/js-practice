@@ -145,10 +145,73 @@ function noMultipleDigits(num) {
   return true;
 }
 
-console.log(featured(12));        // 21
-console.log(featured(20));        // 21
-console.log(featured(21));        // 35
-console.log(featured(997));       // 1029
-console.log(featured(1029));      // 1043
-console.log(featured(999999));    // 1023547
-console.log(featured(999999987)); // 1023456987
+// console.log(featured(12));        // 21
+// console.log(featured(20));        // 21
+// console.log(featured(21));        // 35
+// console.log(featured(997));       // 1029
+// console.log(featured(1029));      // 1043
+// console.log(featured(999999));    // 1023547
+// console.log(featured(999999987)); // 1023456987
+
+
+// Sum Square - Square Sum
+
+function sumSquareDifference(num) {
+  return calcSquareOfSums(num) - calcSumOfSquares(num);
+}
+
+function generateArrUpTo(num) {
+  return new Array(num).fill(num).map(function(el, idx) {
+    return el = idx + 1;
+  });
+}
+
+function calcSumOfSquares(num) {
+  return generateArrUpTo(num).reduce(function(sum, num) {
+    return sum += num * num;
+  });
+}
+
+function calcSquareOfSums(num) {
+  var squareSum =  generateArrUpTo(num).reduce(function(sum, num) {
+    return sum += num;
+  });
+  return Math.pow(squareSum, 2);
+}
+
+// // -> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+// console.log(sumSquareDifference(3));    // 22
+// console.log(sumSquareDifference(10));   // 2640
+// console.log(sumSquareDifference(1));    // 0
+// console.log(sumSquareDifference(100));  // 25164150
+
+
+// bubble sort
+
+function bubbleSort(arr) {
+  var sorted = false;
+  while (!sorted) {
+    sorted = true;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i + 1] < arr[i]) {
+        var temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        sorted = false;
+      }
+    }
+  }
+  return arr;
+}
+
+// var array = [5, 3];
+// console.log(bubbleSort(array));
+// console.log(array);     // [3, 5]
+
+// array = [6, 2, 7, 1, 4]
+// console.log(bubbleSort(array));
+// console.log(array);     // [1, 2, 4, 6, 7]
+
+// array = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// console.log(bubbleSort(array));
+// console.log(array);     // ['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler']
