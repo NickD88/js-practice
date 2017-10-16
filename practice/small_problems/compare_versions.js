@@ -1,4 +1,4 @@
-function compareVersions(version1, version2){
+pfunction compareVersions(version1, version2){
   var v1Arr, v2Arr, v1Value, v2Value;
   
   if (checkInvalidInput(version1)|| checkInvalidInput(version2)) {
