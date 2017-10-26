@@ -180,10 +180,41 @@ function mergeSort(arr) {
   return merge(firstHalf, secondHalf);
 }
 
-console.log(mergeSort([9, 5, 7, 1]));                // [1, 5, 7, 9]
-console.log(mergeSort([5, 3]));                      // [3, 5]
-console.log(mergeSort([6, 2, 7, 1, 4]));             // [1, 2, 4, 6, 7]
-console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
-// ['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler']
-console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
-// [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+// console.log(mergeSort([9, 5, 7, 1]));                // [1, 5, 7, 9]
+// console.log(mergeSort([5, 3]));                      // [3, 5]
+// console.log(mergeSort([6, 2, 7, 1, 4]));             // [1, 2, 4, 6, 7]
+// console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
+// // ['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler']
+// console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
+// // [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
+
+
+
+// Binary Search
+
+function binarySearch(list, item) {
+  var lowIdx = 0;
+  var highIdx = list.length - 1;
+  var middle;
+  var searchElement;
+
+  while (lowIdx <= highIdx) {
+    middle = lowIdx + Math.floor((highIdx - lowIdx) / 2);
+    searchElement = list[middle];
+
+    if (item === searchElement) {
+      return middle;
+    } else if (item > searchElement) {
+      lowIdx = middle + 1;
+    } else {
+      highIdx = middle - 1;
+    }
+  }
+
+  return -1;
+}
+
+console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 77));                                // -1
+console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 89));                                // 7
+console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Peter')); // -1
+console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Tyler')); // 6
